@@ -4,6 +4,7 @@ package com.example.plateplanner.ui.homeScreen
 
 import android.speech.tts.TextToSpeech
 import android.util.Log
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.*
@@ -11,13 +12,10 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.toLowerCase
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.plateplanner.MainViewModel
-import com.example.plateplanner.data.Recipe
 import com.example.plateplanner.utils.generateGPTQuery
-import java.util.Locale
 
 
 //If You want to render Preview You need to TextToSpeech
@@ -61,20 +59,19 @@ fun HomeScreenStateful(ttsObject: TextToSpeech ,viewModel: MainViewModel,onNavig
 
 @Composable
 fun HomeScreenStateless(
-    weeklyDishes: List<String>,  // List of dishes for the week
-    isSaveClicked: Boolean, // Callback when a dish is added
+    weeklyDishes: List<String>,
+    isSaveClicked: Boolean,
     isLoading: Boolean,
     onDishAdd: (String) -> Unit,
     onDishClick: (Int) -> Unit,
-    onSaveAction: () -> Unit,
-
-// Callback when a dish is clicked
+    onSaveAction: () -> Unit
 ) {
     var newDish by remember { mutableStateOf("") }
 
     Box(
         modifier = Modifier
             .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
             .padding(16.dp)
     ) {
         Column(
@@ -84,7 +81,8 @@ fun HomeScreenStateless(
         ) {
             Text(
                 text = "Plan Your Week's Dishes",
-                style = MaterialTheme.typography.headlineSmall
+                style = MaterialTheme.typography.headlineSmall,
+                modifier = Modifier.align(Alignment.CenterHorizontally)
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -104,55 +102,52 @@ fun HomeScreenStateless(
 
             Text(
                 text = "Dishes for the Week",
-                style = MaterialTheme.typography.bodyLarge
+                style = MaterialTheme.typography.bodyLarge,
+                modifier = Modifier.padding(start = 8.dp)
             )
 
             LazyColumn(
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(top = 8.dp, bottom = 64.dp)
             ) {
                 items(weeklyDishes.size) { index ->
                     RecipeCard(
                         dishName = weeklyDishes[index],
-                        isSaveClicked,
-                        onClick = { onDishClick(index+1) }
+                        isSaveClicked = isSaveClicked,
+                        onClick = { onDishClick(index + 1) }
                     )
                 }
             }
-
         }
+
         if (isLoading) {
             CircularProgressIndicator(
                 modifier = Modifier.align(Alignment.Center)
             )
         } else {
-            // Save button
             Button(
                 onClick = { onSaveAction() },
                 enabled = weeklyDishes.isNotEmpty(),
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
                     .padding(16.dp)
-                    .fillMaxWidth()
+                    .fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.primary
+                ),
+                shape = MaterialTheme.shapes.medium
             ) {
-                Text("Save Weekly Dishes")
+                Text("Save Weekly Dishes", color = MaterialTheme.colorScheme.onPrimary)
             }
         }
-
-//        Button(
-//            onClick = {
-//                // Save action
-//                onSaveAction()
-//            },
-//            enabled = weeklyDishes.isNotEmpty(),
-//            modifier = Modifier
-//                .align(Alignment.BottomCenter)
-//                .padding(16.dp)
-//                .fillMaxWidth() // Optional: Make the button full-width
-//        ) {
-//            Text("Save Weekly Dishes")
-//        }
     }
 }
+
+
+
+
+
 @Preview(showBackground = true)
 @Composable
 fun HomeScreenPreview(){

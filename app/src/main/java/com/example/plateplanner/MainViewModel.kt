@@ -14,7 +14,7 @@ import com.aallam.openai.api.chat.ChatMessage
 import com.aallam.openai.api.chat.ChatRole
 import com.aallam.openai.api.model.ModelId
 import com.aallam.openai.client.OpenAI
-import com.example.plateplanner.data.Shoppinglist
+import com.example.plateplanner.data.local.entities.Shoppinglist
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -38,7 +38,7 @@ class MainViewModel @Inject constructor() : ViewModel() {
     @OptIn(BetaOpenAI::class)
     fun getGPTResponse(textToSpeech: TextToSpeech) {
         viewModelScope.launch {
-            val openAI = OpenAI(api)
+            val openAI = OpenAI(api.toString())
 
             try {
                 val chatCompletionRequest = ChatCompletionRequest(

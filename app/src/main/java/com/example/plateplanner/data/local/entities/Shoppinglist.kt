@@ -1,4 +1,4 @@
-package com.example.plateplanner.data
+package com.example.plateplanner.data.local.entities
 
 data class Shoppinglist(
     val shoppingList: List<String>,

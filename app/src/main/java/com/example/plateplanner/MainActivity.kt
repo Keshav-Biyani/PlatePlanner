@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() , TextToSpeech.OnInitListener {
 
         setContent {
             PlatePlannerTheme {
-                val navController = rememberNavController()
+
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background

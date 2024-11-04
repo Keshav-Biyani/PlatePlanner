@@ -17,7 +17,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-
 @Composable
 fun RecipeCard(
     dishName: String,
@@ -25,12 +24,15 @@ fun RecipeCard(
     onClick: () -> Unit
 ) {
     Card(
-        shape = RoundedCornerShape(8.dp),
+        shape = RoundedCornerShape(12.dp),
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 8.dp)
+            .padding(vertical = 4.dp)
             .clickable { onClick() },
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surface
+        )
     ) {
         Column(
             modifier = Modifier
@@ -40,20 +42,19 @@ fun RecipeCard(
             Text(
                 text = dishName,
                 style = MaterialTheme.typography.headlineSmall,
-                color = Color.Black,
+                color = MaterialTheme.colorScheme.onSurface,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
 
             Spacer(modifier = Modifier.height(8.dp))
-            if(isSaveClicked) {
+            if (isSaveClicked) {
                 Text(
                     text = "Tap to view the recipe",
                     style = MaterialTheme.typography.bodyMedium,
-                    color = Color.Gray
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
-
         }
     }
 }
