@@ -9,19 +9,16 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.plateplanner.MainViewModel
 
 
 @Composable
-fun ShoppingListScreenStateful(viewModel: MainViewModel,onBackClick: () -> Unit){
-    val dataList by viewModel.data.collectAsState()
-    ShoppingListScreen(dataList?.shoppingList!!) {
+fun ShoppingListScreenStateful(dataList: List<String>, onBackClick: () -> Unit){
+
+    ShoppingListScreen(dataList) {
 onBackClick()
     }
 
@@ -84,7 +81,7 @@ fun ShoppingListItem(item: String) {
             .padding(vertical = 4.dp),
         elevation = CardDefaults.cardElevation(2.dp),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant
+            containerColor = MaterialTheme.colorScheme.surface
         )
     ) {
         Row(

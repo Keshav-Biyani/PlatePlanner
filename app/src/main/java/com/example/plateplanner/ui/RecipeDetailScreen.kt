@@ -10,6 +10,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -18,17 +19,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.plateplanner.MainViewModel
-import com.example.plateplanner.data.local.entities.Recipe
+import com.example.plateplanner.data.remote.Recipe
 import java.util.Locale
 
 
 @Composable
 fun RecipeDetailScreenStateFul(recipeName : String?,viewModel: MainViewModel){
-    val dataList by viewModel.data.collectAsState()
+
     if (recipeName != null) {
         Log.e("Resp",recipeName)
     }
-    val recipe =dataList?.recipes?.find {  it.id == recipeName}
+    val recipes by viewModel.recipes.collectAsState()
+    val recipe =recipes.find {  it.id == recipeName}
     if(recipe != null) {
         RecipeDetailScreen(recipe) {
 
@@ -46,7 +48,7 @@ fun RecipeDetailScreen(
 ) {
     val options = listOf("Ingredients","Instruction")
 
-    var selectedIndex by remember { mutableStateOf(0) }
+    var selectedIndex by remember { mutableIntStateOf(0) }
 
     Column(
         modifier = Modifier
@@ -62,7 +64,7 @@ fun RecipeDetailScreen(
             style = MaterialTheme.typography.headlineSmall,
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
-                .padding(top =16.dp,bottom = 16.dp)
+                .padding(top = 16.dp, bottom = 16.dp)
         )
         SingleChoiceSegmentedButtonRow(modifier = Modifier.align(Alignment.CenterHorizontally)) {
             options.forEachIndexed { index, label ->

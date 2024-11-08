@@ -2,11 +2,13 @@ package com.example.plateplanner.ui.homeScreen
 
 
 
-import android.speech.tts.TextToSpeech
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -15,29 +17,28 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.plateplanner.MainViewModel
+import com.example.plateplanner.data.local.entities.Dish
 import com.example.plateplanner.utils.generateGPTQuery
 
 
-//If You want to render Preview You need to TextToSpeech
+
 @Composable
-fun HomeScreenStateful(ttsObject: TextToSpeech ,viewModel: MainViewModel,onNavigation:(String)->Unit) {
-    var weeklyDishes by rememberSaveable { mutableStateOf(listOf<String>()) }
-    var isSaveClicked by remember { mutableStateOf(false) }
-    val data  by viewModel.data.collectAsState()
-    val recipesList = data?.recipes// Store the list of recipes
+fun HomeScreenStateful(viewModel: MainViewModel,onNavigation:(String)->Unit) {
+    val weeklyDishes by viewModel.dishList.collectAsState()
+    val recipesList  by viewModel.recipes.collectAsState()// Store the list of recipes
     val isLoading by viewModel.isLoading.collectAsState()
+    val isEditable by viewModel.isEditable.collectAsState()
 
     HomeScreenStateless(
         weeklyDishes = weeklyDishes,
-        isSaveClicked,
+        isEditable,
         isLoading,
-        onDishAdd = {dish->
-            weeklyDishes= weeklyDishes + dish
-
+        onDishAdd = { dish->
+            viewModel.insertDishInDB(Dish(dish))
         },
-        onDishClick = {dishName->
+        onDishClick = { dishName->
 
-            val selectedRecipe = recipesList?.find { it.id == dishName.toString() }
+            val selectedRecipe = recipesList.find { it.id == dishName.toString() }
            // Log.e("Recipie Name",dishName)
             if (selectedRecipe != null) {
                 // Navigate to recipe details or show recipe details
@@ -47,24 +48,29 @@ fun HomeScreenStateful(ttsObject: TextToSpeech ,viewModel: MainViewModel,onNavig
             }
         },
         onSaveAction = {
-            viewModel.gptQuery.value =generateGPTQuery(weeklyDishes, "Veg",4)
+            val dishList = weeklyDishes.map{it.dishList}
+           viewModel.gptQuery.value =generateGPTQuery(dishList, "Veg",4)
 
-            viewModel.getGPTResponse(ttsObject)
-            isSaveClicked = !isSaveClicked
+            viewModel.getGPTResponse()
+            viewModel.saveEditablePref(false)
 
 
+        }, setEditable = {
+            viewModel.saveEditablePref(true)
         }
+
     )
 }
 
 @Composable
 fun HomeScreenStateless(
-    weeklyDishes: List<String>,
-    isSaveClicked: Boolean,
+    weeklyDishes: List<Dish>,
+    isEditable: Boolean,
     isLoading: Boolean,
     onDishAdd: (String) -> Unit,
     onDishClick: (Int) -> Unit,
-    onSaveAction: () -> Unit
+    onSaveAction: () -> Unit,
+    setEditable :()->Unit
 ) {
     var newDish by remember { mutableStateOf("") }
 
@@ -81,14 +87,15 @@ fun HomeScreenStateless(
         ) {
             Text(
                 text = "Plan Your Week's Dishes",
-                style = MaterialTheme.typography.headlineSmall,
+                style = MaterialTheme.typography.headlineMedium,
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             )
 
             Spacer(modifier = Modifier.height(16.dp))
-
+            if(isEditable){
             DishInput(
                 dishName = newDish,
+                isEditable= isEditable,
                 onDishChange = { newDish = it },
                 onAddClick = {
                     if (newDish.isNotEmpty()) {
@@ -97,12 +104,13 @@ fun HomeScreenStateless(
                     }
                 }
             )
+            }
 
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(
                 text = "Dishes for the Week",
-                style = MaterialTheme.typography.bodyLarge,
+                style = MaterialTheme.typography.headlineSmall,
                 modifier = Modifier.padding(start = 8.dp)
             )
 
@@ -111,13 +119,14 @@ fun HomeScreenStateless(
                     .fillMaxSize()
                     .padding(top = 8.dp, bottom = 64.dp)
             ) {
-                items(weeklyDishes.size) { index ->
+                items(weeklyDishes){dish->
                     RecipeCard(
-                        dishName = weeklyDishes[index],
-                        isSaveClicked = isSaveClicked,
-                        onClick = { onDishClick(index + 1) }
-                    )
-                }
+                    dishName =dish.dishList ,
+                    isEditable= isEditable || isLoading,
+                    onClick = { onDishClick(dish.id) }
+                )}
+
+
             }
         }
 
@@ -125,7 +134,7 @@ fun HomeScreenStateless(
             CircularProgressIndicator(
                 modifier = Modifier.align(Alignment.Center)
             )
-        } else {
+        } else if(isEditable) {
             Button(
                 onClick = { onSaveAction() },
                 enabled = weeklyDishes.isNotEmpty(),
@@ -138,7 +147,28 @@ fun HomeScreenStateless(
                 ),
                 shape = MaterialTheme.shapes.medium
             ) {
-                Text("Save Weekly Dishes", color = MaterialTheme.colorScheme.onPrimary)
+                Icon(
+                    imageVector = Icons.Filled.Search, // Use an AI-related icon here if you have one
+                    contentDescription = "AI Icon",
+                    tint = MaterialTheme.colorScheme.onPrimary,
+                    modifier = Modifier.padding(end = 8.dp) // Adds space between the icon and the text
+                )
+                Text("Generate Recipe", color = MaterialTheme.colorScheme.onPrimary)
+            }
+        }else{
+            Button(
+                onClick = { setEditable() },
+                enabled = weeklyDishes.isNotEmpty(),
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .padding(16.dp)
+                    .fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.primary
+                ),
+                shape = MaterialTheme.shapes.medium
+            ) {
+                Text("Click for Edit", color = MaterialTheme.colorScheme.onPrimary)
             }
         }
     }
@@ -152,12 +182,13 @@ fun HomeScreenStateless(
 @Composable
 fun HomeScreenPreview(){
     HomeScreenStateless(
-        weeklyDishes = listOf("Pasta","Panner Butter Masala"),
-        isSaveClicked = true,
+        weeklyDishes = listOf<Dish>(Dish("Pasta")),
+        isEditable = true,
         isLoading = false,
         onDishAdd = {},
         onDishClick = {},
-        onSaveAction = {}
+        onSaveAction = {},
+        setEditable = {}
     )
 }
 

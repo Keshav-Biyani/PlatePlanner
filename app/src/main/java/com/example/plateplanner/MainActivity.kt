@@ -20,15 +20,15 @@ import com.google.gson.internal.GsonBuildConfig
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Locale
 @AndroidEntryPoint
-class MainActivity : ComponentActivity() , TextToSpeech.OnInitListener {
-    private lateinit var ttsObject: TextToSpeech
+class MainActivity : ComponentActivity() {
+  //  private lateinit var ttsObject: TextToSpeech
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        ttsObject = TextToSpeech(this, this)
+       // ttsObject = TextToSpeech(this, this)
 
         setContent {
             PlatePlannerTheme {
@@ -38,19 +38,19 @@ class MainActivity : ComponentActivity() , TextToSpeech.OnInitListener {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     //MyGPT(ttsObject)
-                    Navigation(ttsObject)
+                    Navigation()
                    // HomeScreenStateful(ttsObject)
                 }
             }
         }
     }
 
-    override fun onInit(status: Int) {
-        val result = ttsObject.setLanguage(Locale.ENGLISH)
-        if (result == TextToSpeech.LANG_NOT_SUPPORTED) {
-            Log.d("TTS", "onInit: Error langugae not supported")
-        }
-    }
+//    override fun onInit(status: Int) {
+//        val result = ttsObject.setLanguage(Locale.ENGLISH)
+//        if (result == TextToSpeech.LANG_NOT_SUPPORTED) {
+//            Log.d("TTS", "onInit: Error langugae not supported")
+//        }
+//    }
 }
 
 @Composable

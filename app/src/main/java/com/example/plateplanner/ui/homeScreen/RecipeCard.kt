@@ -17,10 +17,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.plateplanner.localPref.EditablePref
+
 @Composable
 fun RecipeCard(
     dishName: String,
-    isSaveClicked: Boolean,
+    isEditable: Boolean,
     onClick: () -> Unit
 ) {
     Card(
@@ -28,7 +30,7 @@ fun RecipeCard(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 4.dp)
-            .clickable { onClick() },
+            .clickable {  onClick() },
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface
@@ -48,7 +50,7 @@ fun RecipeCard(
             )
 
             Spacer(modifier = Modifier.height(8.dp))
-            if (isSaveClicked) {
+            if (!isEditable) {
                 Text(
                     text = "Tap to view the recipe",
                     style = MaterialTheme.typography.bodyMedium,
