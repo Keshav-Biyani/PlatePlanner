@@ -1,4 +1,4 @@
-package com.example.plateplanner
+package com.example.plateplanner.di
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

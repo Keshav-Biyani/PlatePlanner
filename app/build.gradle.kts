@@ -84,10 +84,6 @@ dependencies {
     implementation (libs.openai.client)
     implementation (libs.ktor.client.android)
 
-   // implementation (libs.hilt.android)
-  //  implementation (libs.androidx.hilt.navigation.compose)
-   // implementation(libs.androidx.hilt.navigation.fragment)
-
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
     implementation(libs.androidx.hilt.work)
@@ -102,7 +98,6 @@ dependencies {
     kapt (libs.androidx.room.compiler)
 
     implementation(libs.androidx.datastore.preferences)
-
     implementation(libs.androidx.datastore.preferences.core)
 
 

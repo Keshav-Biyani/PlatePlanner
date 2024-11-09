@@ -1,0 +1,65 @@
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+android:width="200dp"
+android:height="200dp"
+android:viewportWidth="200"
+android:viewportHeight="200">
+
+<!-- Chef Hat with AI Circuit Elements -->
+<group android:fillColor="#FFFFFf" android:strokeColor="#129575" android:strokeWidth="4">
+    <path
+        android:fillColor="#129575"
+        android:pathData="M70,60 C60,40 140,40 130,60 C150,70 150,100 70,100 C50,80 50,70 70,60" />
+    <path
+        android:pathData="M85,105 L115,105"
+        android:strokeLineCap="round" />
+</group>
+
+<!-- AI Nodes on Chef Hat -->
+<path
+    android:pathData="M90,65"
+    android:fillColor="#FFFFFF" />
+<path
+    android:pathData="M110,65"
+    android:fillColor="#FFFFFF" />
+<path
+    android:pathData="M90,65 L110,65"
+    android:strokeColor="#FFFFFF"
+    android:strokeWidth="2"
+    android:strokeLineCap="round" />
+
+<!-- Spoon and Fork Crossed -->
+<path
+    android:pathData="M75,130 L125,170"
+    android:strokeColor="#129575"
+    android:strokeWidth="4"
+    android:strokeLineCap="round" />
+<path
+    android:pathData="M125,130 L75,170"
+    android:strokeColor="#129575"
+    android:strokeWidth="4"
+    android:strokeLineCap="round" />
+
+<!-- Spoon Bowl -->
+<path
+    android:pathData="M125,130"
+    android:fillColor="#129575" />
+
+<!-- Fork Tines -->
+<path
+    android:pathData="M78,167 L74,173"
+    android:strokeColor="#129575"
+    android:strokeWidth="2"
+    android:strokeLineCap="round" />
+<path
+    android:pathData="M82,167 L78,173"
+    android:strokeColor="#129575"
+    android:strokeWidth="2"
+    android:strokeLineCap="round" />
+<path
+    android:pathData="M86,167 L82,173"
+    android:strokeColor="#129575"
+    android:strokeWidth="2"
+    android:strokeLineCap="round" />
+</vector>
+

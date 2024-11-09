@@ -11,19 +11,18 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.plateplanner.MainViewModel
+import com.example.plateplanner.ui.viewModel.MainViewModel
 import com.example.plateplanner.data.local.entities.Dish
 import com.example.plateplanner.utils.generateGPTQuery
 
 
 
 @Composable
-fun HomeScreenStateful(viewModel: MainViewModel,onNavigation:(String)->Unit) {
+fun HomeScreenStateful(viewModel: MainViewModel, onNavigation:(String)->Unit) {
     val weeklyDishes by viewModel.dishList.collectAsState()
     val recipesList  by viewModel.recipes.collectAsState()// Store the list of recipes
     val isLoading by viewModel.isLoading.collectAsState()

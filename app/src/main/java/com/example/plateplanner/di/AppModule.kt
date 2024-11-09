@@ -1,4 +1,4 @@
-package com.example.plateplanner
+package com.example.plateplanner.di
 
 import android.content.Context
 import androidx.datastore.core.DataStore
@@ -8,10 +8,11 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.preferencesDataStoreFile
 import androidx.room.Room
-import com.example.plateplanner.data.Repository
+import com.example.plateplanner.BuildConfig
+import com.example.plateplanner.data.repository.Repository
 import com.example.plateplanner.data.local.database.RecipeDatabase
-import com.example.plateplanner.localPref.EditablePref
-import com.example.plateplanner.localPref.EditablePrefImpl
+import com.example.plateplanner.data.localPreferences.EditablePref
+import com.example.plateplanner.data.localPreferences.EditablePrefImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,7 +22,7 @@ import javax.inject.Singleton
 
 @InstallIn(SingletonComponent ::class)
 @Module
-object AppDataBaseModule{
+object AppModule{
     @Singleton
     @Provides
     fun provideAppDataBase(@ApplicationContext context: Context): RecipeDatabase {
@@ -46,7 +47,7 @@ object AppDataBaseModule{
     }
 
     @Provides
-    fun provideEditablePref(dataStore: DataStore<Preferences>) :EditablePref = EditablePrefImpl(dataStore)
+    fun provideEditablePref(dataStore: DataStore<Preferences>) : EditablePref = EditablePrefImpl(dataStore)
 
     @Provides
     @Singleton
@@ -54,7 +55,7 @@ object AppDataBaseModule{
 
     @Provides
     @Singleton
-    fun providRespository(apiKey : String,db :RecipeDatabase): Repository{
+    fun providRespository(apiKey : String,db :RecipeDatabase): Repository {
         return Repository(apiKey,db)
     }
 }

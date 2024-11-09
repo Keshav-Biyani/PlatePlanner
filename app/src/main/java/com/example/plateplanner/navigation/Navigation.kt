@@ -19,9 +19,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.plateplanner.MainViewModel
-import com.example.plateplanner.ui.RecipeDetailScreenStateFul
-import com.example.plateplanner.ui.ShoppingListScreenStateful
+import com.example.plateplanner.ui.viewModel.MainViewModel
+import com.example.plateplanner.ui.recipeScreen.RecipeDetailScreenStateFul
+import com.example.plateplanner.ui.shoppingListScreen.ShoppingListScreenStateful
 import com.example.plateplanner.ui.homeScreen.HomeScreenStateful
 
 @Composable

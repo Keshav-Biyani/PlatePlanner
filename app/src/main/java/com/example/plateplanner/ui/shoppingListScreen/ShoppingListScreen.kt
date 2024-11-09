@@ -1,4 +1,4 @@
-package com.example.plateplanner.ui
+package com.example.plateplanner.ui.shoppingListScreen
 
 
 
@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 fun ShoppingListScreenStateful(dataList: List<String>, onBackClick: () -> Unit){
 
     ShoppingListScreen(dataList) {
-onBackClick()
+        onBackClick()
     }
 
 }
@@ -71,49 +71,6 @@ fun ShoppingListScreen(
             Text("Back", color = MaterialTheme.colorScheme.onPrimary)
         }
     }
-}
-
-@Composable
-fun ShoppingListItem(item: String) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 4.dp),
-        elevation = CardDefaults.cardElevation(2.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface
-        )
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            // Item Text
-            Text(
-                text = item,
-                style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.weight(1f)
-            )
-
-            // Optional Checkbox
-            Checkbox(
-                checked = false,
-                onCheckedChange = {}, // Add logic if needed
-                colors = CheckboxDefaults.colors(
-                    checkedColor = MaterialTheme.colorScheme.primary
-                )
-            )
-        }
-    }
-}
-
-
-@Preview(showBackground = true)
-@Composable
-fun ShoppingListItemPreview() {
-    ShoppingListItem(item = "Pasta")
 }
 
 

@@ -1,4 +1,4 @@
-package com.example.plateplanner.data
+package com.example.plateplanner.data.repository
 
 import android.util.Log
 import com.aallam.openai.api.BetaOpenAI
@@ -11,7 +11,7 @@ import com.aallam.openai.client.OpenAI
 import com.example.plateplanner.data.local.database.RecipeDatabase
 import com.example.plateplanner.data.local.entities.Dish
 import com.example.plateplanner.data.local.entities.ShoppingListEntity
-import com.example.plateplanner.data.remote.Recipe
+import com.example.plateplanner.data.local.entities.Recipe
 import com.example.plateplanner.data.remote.Shoppinglist
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers

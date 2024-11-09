@@ -1,8 +1,6 @@
 package com.example.plateplanner.data.local.database
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.plateplanner.data.local.dao.DishDao
@@ -10,8 +8,8 @@ import com.example.plateplanner.data.local.dao.RecipeDao
 import com.example.plateplanner.data.local.dao.ShoppingListDao
 import com.example.plateplanner.data.local.entities.Dish
 import com.example.plateplanner.data.local.entities.ShoppingListEntity
-import com.example.plateplanner.data.remote.Converters
-import com.example.plateplanner.data.remote.Recipe
+import com.example.plateplanner.data.local.entities.Converters
+import com.example.plateplanner.data.local.entities.Recipe
 
 
 @Database(

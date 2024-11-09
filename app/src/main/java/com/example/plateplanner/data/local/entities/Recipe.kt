@@ -1,4 +1,4 @@
-package com.example.plateplanner.data.remote
+package com.example.plateplanner.data.local.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -8,7 +8,8 @@ import com.google.gson.Gson
 
 @Entity("RecipeTable")
 data class Recipe(
-    @PrimaryKey val id: String,
+    @PrimaryKey
+    val id: String,
     val ingredients: List<String>,
     val instructions: String,
     val name: String

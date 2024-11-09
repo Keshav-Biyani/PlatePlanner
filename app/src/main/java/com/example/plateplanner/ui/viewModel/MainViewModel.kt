@@ -1,13 +1,13 @@
-package com.example.plateplanner
+package com.example.plateplanner.ui.viewModel
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.plateplanner.data.Repository
+import com.example.plateplanner.data.repository.Repository
 import com.example.plateplanner.data.local.entities.Dish
 import com.example.plateplanner.data.local.entities.ShoppingListEntity
-import com.example.plateplanner.data.remote.Recipe
-import com.example.plateplanner.localPref.EditablePref
+import com.example.plateplanner.data.local.entities.Recipe
+import com.example.plateplanner.data.localPreferences.EditablePref
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted

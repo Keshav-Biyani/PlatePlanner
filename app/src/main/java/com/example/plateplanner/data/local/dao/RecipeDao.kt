@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.plateplanner.data.remote.Recipe
+import com.example.plateplanner.data.local.entities.Recipe
 import kotlinx.coroutines.flow.Flow
 
 
