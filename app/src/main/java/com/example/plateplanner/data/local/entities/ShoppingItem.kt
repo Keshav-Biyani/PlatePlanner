@@ -2,12 +2,11 @@ package com.example.plateplanner.data.local.entities
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
-import androidx.room.PrimaryKey
 import com.example.plateplanner.data.remote.Ingredient
 
-
 @Entity(
-    tableName = "RecipeTable",
+    tableName = "ShoppingTable",
+    primaryKeys = ["id","ingredient"],
     foreignKeys = [
         ForeignKey(
             entity = Dish::class,
@@ -17,16 +16,11 @@ import com.example.plateplanner.data.remote.Ingredient
         )
     ]
 )
-data class Recipe(
-    // Same primary key as Dish.id
-    val recipeData: RecipeData,
-    @PrimaryKey
-    val id : Int
+data class ShoppingItem(
+   // Same primary key as Dish.id
+    val id : Int,
+    val ingredient: Ingredient,
+    val name: String,
+    val shoppingStatus : Boolean = false
 )
 
-data class RecipeData(
-     val id: Int, // Same primary key as Dish.id
-    val ingredients: List<Ingredient>,
-    val instructions: String,
-    val name: String
-)

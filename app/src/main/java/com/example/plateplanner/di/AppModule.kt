@@ -39,7 +39,6 @@ object AppModule{
         return PreferenceDataStoreFactory.create(
             corruptionHandler = ReplaceFileCorruptionHandler (
                 produceNewData = { emptyPreferences() }
-
             ), produceFile = {
                 context.preferencesDataStoreFile("editable_status_data")
             }
@@ -55,7 +54,7 @@ object AppModule{
 
     @Provides
     @Singleton
-    fun providRespository(apiKey : String,db :RecipeDatabase): Repository {
+    fun provideRepository(apiKey : String,db :RecipeDatabase): Repository {
         return Repository(apiKey,db)
     }
 }

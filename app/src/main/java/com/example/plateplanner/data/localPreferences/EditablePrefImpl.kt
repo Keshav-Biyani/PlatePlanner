@@ -18,7 +18,7 @@ class EditablePrefImpl(private val datastore: DataStore<Preferences>) : Editable
 
     override fun getEditableStatus(): Flow<Boolean> {
         return  datastore.data.catch { emit(emptyPreferences()) }.map {
-            it[IS_EDITABLE_KEY] ?: false
+            it[IS_EDITABLE_KEY] ?: true
         }
     }
 
