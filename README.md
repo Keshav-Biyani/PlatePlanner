@@ -5,6 +5,23 @@
 Plateplanner is a smart and user-friendly meal-planning app designed to simplify your weekly food preparation. With a few taps, you can add dishes for the week, generate recipes, and create a shopping list with precise ingredient quantities. Manage your pantry with ease by ticking off ingredients you already have, and focus on what you need to buy.  
 
 ---
+## Screenshots  
+
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+  <img src="https://github.com/user-attachments/assets/f2316c4d-dcfe-4f41-8f9e-4330934e4c3b" width="200" />
+  <img src="https://github.com/user-attachments/assets/7f9e6fec-1f2e-46b5-86b5-e31d78d1a1ae" width="200" />
+  <img src="https://github.com/user-attachments/assets/30161f38-942c-4d0a-8fe6-8001855160c0" width="200" />  
+  <img src="https://github.com/user-attachments/assets/7749fd00-4edf-4caa-adfe-a17e4dfc36dd" width="200" />
+  <img src="https://github.com/user-attachments/assets/56a16bb5-a30f-4428-a615-4d7dce85cc6e" width="200" />
+  <img src="https://github.com/user-attachments/assets/3c3f7344-7286-4544-8a84-a5d35bbda85d" width="200" />
+  <img src="https://github.com/user-attachments/assets/022dacc4-b92c-47cb-8287-316afec3a7f4" width="200" /> 
+  <img src="https://github.com/user-attachments/assets/9a3dac22-64e2-4d67-aef3-bc997dffee0c" width="200" />
+  <img src="https://github.com/user-attachments/assets/90ff7d70-e68b-4439-86d2-871db6607f3d" width="200" />
+  
+</div>
+
+
+---
 
 ## Key Features  
 
@@ -81,23 +98,6 @@ Plateplanner is a smart and user-friendly meal-planning app designed to simplify
 
 ---
 
-## Screenshots  
-
-<div style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <img src="https://github.com/user-attachments/assets/f2316c4d-dcfe-4f41-8f9e-4330934e4c3b" width="200" />
-  <img src="https://github.com/user-attachments/assets/7f9e6fec-1f2e-46b5-86b5-e31d78d1a1ae" width="200" />
-  <img src="https://github.com/user-attachments/assets/30161f38-942c-4d0a-8fe6-8001855160c0" width="200" />  
-  <img src="https://github.com/user-attachments/assets/7749fd00-4edf-4caa-adfe-a17e4dfc36dd" width="200" />
-  <img src="https://github.com/user-attachments/assets/56a16bb5-a30f-4428-a615-4d7dce85cc6e" width="200" />
-  <img src="https://github.com/user-attachments/assets/3c3f7344-7286-4544-8a84-a5d35bbda85d" width="200" />
-  <img src="https://github.com/user-attachments/assets/022dacc4-b92c-47cb-8287-316afec3a7f4" width="200" /> 
-  <img src="https://github.com/user-attachments/assets/9a3dac22-64e2-4d67-aef3-bc997dffee0c" width="200" />
-  <img src="https://github.com/user-attachments/assets/90ff7d70-e68b-4439-86d2-871db6607f3d" width="200" />
-  
-</div>
-
-
----
 
 ## Make Weekly Meal Planning Effortless with Plateplanner!  
 
