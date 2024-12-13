@@ -1,8 +1,11 @@
+# Plateplanner 🍽️
 
+Plateplanner is a smart and user-friendly meal-planning app designed to simplify your weekly food preparation. With a few taps, you can add dishes for the week, generate recipes, and create a shopping list with precise ingredient quantities. Manage your pantry with ease by ticking off ingredients you already have, and focus on what you need to buy.
 
-# Plateplanner 🍽️  
+---
+## Live on Amazon Appstore
 
-Plateplanner is a smart and user-friendly meal-planning app designed to simplify your weekly food preparation. With a few taps, you can add dishes for the week, generate recipes, and create a shopping list with precise ingredient quantities. Manage your pantry with ease by ticking off ingredients you already have, and focus on what you need to buy.  
+Plateplanner is now available on the Amazon Appstore! [Download it here](https://www.amazon.com/dp/B0DQ8ZD3YL/ref=apps_sf_sta) and start planning your meals today!
 
 ---
 ## Screenshots  
@@ -14,16 +17,14 @@ Plateplanner is a smart and user-friendly meal-planning app designed to simplify
   <img src="https://github.com/user-attachments/assets/7749fd00-4edf-4caa-adfe-a17e4dfc36dd" width="200" />
   <img src="https://github.com/user-attachments/assets/56a16bb5-a30f-4428-a615-4d7dce85cc6e" width="200" />
   <img src="https://github.com/user-attachments/assets/3c3f7344-7286-4544-8a84-a5d35bbda85d" width="200" />
-  <img src="https://github.com/user-attachments/assets/022dacc4-b92c-47cb-8287-316afec3a7f4" width="200" /> 
+  <img src="https://github.com/user-attachments/assets/022dacc4-b92c-47cb-8287-316afec3a7f4" width="200" />
   <img src="https://github.com/user-attachments/assets/9a3dac22-64e2-4d67-aef3-bc997dffee0c" width="200" />
   <img src="https://github.com/user-attachments/assets/90ff7d70-e68b-4439-86d2-871db6607f3d" width="200" />
-  
 </div>
-
 
 ---
 
-## Key Features  
+## Key Features
 
 ### 🌟 Core Functionalities:  
 - **Plan Weekly Meals:** Add dishes for the week effortlessly.  
@@ -38,7 +39,7 @@ Plateplanner is a smart and user-friendly meal-planning app designed to simplify
 
 ---
 
-## Technologies Used  
+## Technologies Used
 
 ### 🛠️ Tech Stack:  
 - **Kotlin & Jetpack Compose:** Modern, declarative UI for an intuitive user experience.  
@@ -50,7 +51,7 @@ Plateplanner is a smart and user-friendly meal-planning app designed to simplify
 
 ---
 
-## App Structure  
+## App Structure
 
 ### 📂 File Organization:  
 - **`data`**:  
@@ -71,7 +72,7 @@ Plateplanner is a smart and user-friendly meal-planning app designed to simplify
 
 ---
 
-## Screens  
+## Screens
 
 1. **Splash Screen**: A welcoming screen to introduce the app.  
 2. **Home Screen**: Add dishes for the week, view the bottom navigation bar.  
@@ -80,7 +81,7 @@ Plateplanner is a smart and user-friendly meal-planning app designed to simplify
 
 ---
 
-## How It Works  
+## How It Works
 
 1. Add dishes for the week from the Home Screen.  
 2. Click on the *Generate* button to get AI-generated recipes and ingredient quantities.  
@@ -89,7 +90,7 @@ Plateplanner is a smart and user-friendly meal-planning app designed to simplify
 
 ---
 
-## Future Enhancements  
+## Future Enhancements
 
 - Add a screen to collect user preferences (dietary preferences, number of servings, etc.) at the start.  
 - Allow customization for each dish (e.g., change ingredient quantities, modify recipe details).  
@@ -98,8 +99,7 @@ Plateplanner is a smart and user-friendly meal-planning app designed to simplify
 
 ---
 
-
 ## Make Weekly Meal Planning Effortless with Plateplanner!  
 
-Plateplanner turns the hassle of meal planning into a seamless and enjoyable experience. With the power of AI, you can ensure every meal is perfectly planned and prepared. Start today and take control of your weekly meals!  
+Plateplanner turns the hassle of meal planning into a seamless and enjoyable experience. With the power of AI, you can ensure every meal is perfectly planned and prepared. [Download it now](https://www.amazon.com/dp/B0DQ8ZD3YL/ref=apps_sf_sta) and take control of your weekly meals!
 
